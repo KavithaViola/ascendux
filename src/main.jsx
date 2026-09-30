@@ -1,5 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
+import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./styles.css";
@@ -15,11 +16,11 @@ const services = [
     title: "Mobile Apps",
     text: "Intuitive mobile products that help your customers stay connected to your business."
   },
-  {
-    icon: "bi-cloud-check",
-    title: "Cloud & DevOps",
-    text: "Scalable cloud infrastructure, automation and reliable deployment pipelines."
-  },
+  // {
+  //   icon: "bi-cloud-check",
+  //   title: "Cloud & DevOps",
+  //   text: "Scalable cloud infrastructure, automation and reliable deployment pipelines."
+  // },
   {
     icon: "bi-cpu",
     title: "AI & Automation",
@@ -30,11 +31,11 @@ const services = [
     title: "Data & Analytics",
     text: "Turn business data into clear dashboards, insights and measurable decisions."
   },
-  {
-    icon: "bi-shield-check",
-    title: "Cybersecurity",
-    text: "Security-minded engineering that protects your applications, systems and users."
-  }
+  // {
+  //   icon: "bi-shield-check",
+  //   title: "Cybersecurity",
+  //   text: "Security-minded engineering that protects your applications, systems and users."
+  // }
 ];
 
 const stats = [
@@ -45,18 +46,22 @@ const stats = [
 ];
 
 function App() {
+  const [active, setActive] = useState(true);
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark fixed-top nav-glass">
         <div className="container py-2">
           <a className="navbar-brand fw-bold d-flex align-items-center gap-2" href="#home">
-            <span className="brand-mark">A</span>
-            <span>ascend<span className="brand-accent">ux</span></span>
+            <img src="images/logo.jpg" alt="logo" width="175" />
           </a>
-
+          <div className="d-flex gap-2 align-items-center">
+          <li className="d-md-none list-unstyled">
+            <i onClick={() => setActive(!active)} className={active ? "bi bi-brightness-high-fill active" : "bi bi-moon-fill active"}></i>
+          </li>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
             <span className="navbar-toggler-icon"></span>
           </button>
+          </div>
 
           <div className="collapse navbar-collapse" id="mainNav">
             <ul className="navbar-nav ms-auto align-items-lg-center gap-lg-2">
@@ -67,6 +72,9 @@ function App() {
               ))}
               <li className="nav-item ms-lg-2">
                 <a className="btn btn-primary rounded-pill px-4" href="#contact">Let's Talk <i className="bi bi-arrow-up-right ms-1"></i></a>
+              </li>
+              <li className="d-none d-md-block">
+                <i onClick={() => setActive(!active)} className={active ? "bi bi-brightness-high-fill active" : "bi bi-moon-fill active"}></i>
               </li>
             </ul>
           </div>
@@ -117,7 +125,7 @@ function App() {
           </div>
         </section>
 
-        <section className="stats-strip">
+        {/* <section className="stats-strip">
           <div className="container">
             <div className="row g-0">
               {stats.map(([number, label]) => (
@@ -128,7 +136,7 @@ function App() {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         <section id="services" className="section-padding">
           <div className="container">
@@ -144,7 +152,7 @@ function App() {
 
             <div className="row g-4">
               {services.map((service) => (
-                <div className="col-md-6 col-lg-4" key={service.title}>
+                <div className="col-md-6 col-lg-6" key={service.title}>
                   <div className="service-card h-100">
                     <div className="service-icon"><i className={`bi ${service.icon}`}></i></div>
                     <h3 className="h5 fw-bold">{service.title}</h3>
@@ -232,7 +240,7 @@ function App() {
                   <p className="text-secondary fs-5 mb-0">Tell us what you're building. We'll help you find the clearest path from idea to impact.</p>
                 </div>
                 <div className="col-lg-5">
-                  <form onSubmit={(e) => { e.preventDefault(); alert("Thanks! We'll be in touch soon."); }}>
+                  <form onSubmit={(e) => { e.preventDefault(); alert("Thanks! We'll be in touch soon.");  e.target.reset() }}>
                     <div className="mb-3"><input required className="form-control form-control-lg" placeholder="Your name" /></div>
                     <div className="mb-3"><input required type="email" className="form-control form-control-lg" placeholder="Work email" /></div>
                     <div className="mb-3"><textarea required className="form-control form-control-lg" rows="3" placeholder="Tell us about your project"></textarea></div>
