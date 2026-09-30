@@ -27,12 +27,12 @@ const services = [
   }
 ];
 
-const stats = [
-  ["25+", "Projects delivered"],
-  ["15+", "Technology solutions"],
-  ["98%", "Client satisfaction"],
-  ["24/7", "Technical support"]
-];
+// const stats = [
+//   ["25+", "Projects delivered"],
+//   ["15+", "Technology solutions"],
+//   ["98%", "Client satisfaction"],
+//   ["24/7", "Technical support"]
+// ];
 
 function App() {
   const [theme, setTheme] = useState(() => {
@@ -219,7 +219,7 @@ function App() {
         </section>
 
         {/* Stats Strip */}
-        <section className="stats-strip" aria-label="Key Statistics">
+        {/* <section className="stats-strip" aria-label="Key Statistics">
           <div className="container">
             <div className="row g-0">
               {stats.map(([number, label]) => (
@@ -230,7 +230,7 @@ function App() {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Services Section */}
         <section id="services" className="section-padding">
